@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsung Galaxy Showroom - BUS101 Marketing Project</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Prompt & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        prompt: ['Prompt', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif']
+                    },
+                    colors: {
+                        samsung: {
+                            blue: '#1428A0',
+                            accent: '#0381FE',
+                            dark: '#0B0F19',
+                            card: '#161F30',
+                            lightBg: '#F4F7FC'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #0b0f19;
+            color: #f3f4f6;
+        }
+        .glow-effect {
+            box-shadow: 0 0 25px rgba(3, 129, 254, 0.2);
+        }
+        .glow-effect:hover {
+            box-shadow: 0 0 35px rgba(3, 129, 254, 0.45);
+        }
+        .glass-card {
+            background: rgba(22, 31, 48, 0.8);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 50%, #1D4ED8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0381FE;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+        .animate-ambient {
+            animation: pulseGlow 4s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
+
+    <header class="sticky top-0 z-40 glass-card border-b border-gray-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('home')">
+                <span class="text-2xl font-black tracking-widest text-white uppercase font-inter">SAMSUNG</span>
+                <span class="text-xs bg-blue-600 text-white px-2.5 py-0.5 rounded-full font-bold tracking-wider">SHOWROOM</span>
+            </div>
+            
+            <nav class="flex items-center space-x-3">
+                <button onclick="navigateTo('home')" id="nav-home" class="text-sm px-4 py-2 rounded-xl font-medium transition-all duration-200 text-blue-400 bg-blue-950/60 border border-blue-800/50">
+                    <i class="fa-solid fa-house mr-1.5"></i> หน้าแรก
+                </button>
+                <button onclick="navigateTo('catalog')" id="nav-catalog" class="text-sm px-4 py-2 rounded-xl font-medium text-gray-400 hover:text-white hover:bg-gray-800/80 transition-all duration-200">
+                    <i class="fa-solid fa-mobile-screen-button mr-1.5"></i> รายการสินค้า
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="page-home" class="flex-grow flex items-center justify-center relative overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
+        <!-- Ambient Glowing Background Spheres -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/15 rounded-full blur-[140px] pointer-events-none animate-ambient"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-indigo-600/15 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-3xl w-full text-center z-10 space-y-8">
+            <!-- Brand Badge -->
+            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-card border border-blue-500/30 text-blue-400 text-xs sm:text-sm font-semibold tracking-wide shadow-lg">
+                <i class="fa-solid fa-sparkles text-blue-400"></i>
+                <span>Samsung Galaxy Interactive Catalog 2026</span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                นวัตกรรมสมาร์ทโฟนระดับโลก <br>
+                <span class="gradient-text">ตอบโจทย์ทุกไลฟ์สไตล์ มหาลัย & วัยทำงาน</span>
+            </h1>
+
+            <!-- Introduction Narrative -->
+            <div class="glass-card p-6 sm:p-8 rounded-2xl border border-gray-800 text-gray-300 text-base sm:text-lg leading-relaxed text-left sm:text-center space-y-4 shadow-xl">
+                <p>
+                    ยินดีต้อนรับสู่โชว์รูมออนไลน์ของ <strong class="text-white font-semibold">Samsung Galaxy</strong> แหล่งรวบรวมข้อมูลสมาร์ทโฟนคุณภาพสูง ครอบคลุมตั้งแต่ตระกูล Galaxy A Series ราคาสบายกระเป๋าสำหรับนิสิตนักศึกษา ไปจนถึง Galaxy S Series เรือธง และ Galaxy Z Series จอพับสุดพรีเมียมสำหรับคนทำงานและผู้บริหาร
+                </p>
+                <p class="text-sm sm:text-base text-gray-400">
+                    ภายในเว็บไซต์ คุณจะได้พบกับรายละเอียดข้อมูลสเปคตัวเครื่อง ภาพถ่ายผลิตภัณฑ์จริง บทความนำเสนอจุดเด่นประจำรุ่น และราคาจำหน่ายจริงจากน้อยไปมาก เพื่อช่วยในการตัดสินใจเลือกสมาร์ทโฟนที่ตอบโจทย์สไตล์ชีวิตของคุณได้อย่างสมบูรณ์แบบ
+                </p>
+            </div>
+
+            <!-- MANDATORY RED DISCLAIMER -->
+            <div class="p-5 sm:p-6 rounded-2xl bg-red-950/80 border-2 border-red-500 shadow-2xl text-center backdrop-blur-md">
+                <p class="text-red-400 font-black text-lg sm:text-2xl tracking-wide uppercase leading-snug drop-shadow-md">
+                    <i class="fa-solid fa-triangle-exclamation mr-2 text-red-400"></i>
+                    เว็บไซต์นี้จัดทำขึ้นเพื่อประกอบกิจกรรมการเรียนการสอนในรายวิชา BUS101 Principles of Marketing เท่านั้น
+                </p>
+            </div>
+
+            <!-- CTA Arrow Button to Page 2 -->
+            <div class="pt-4">
+                <button onclick="navigateTo('catalog')" class="glow-effect group inline-flex items-center space-x-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-lg px-9 py-4 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-2xl active:scale-95">
+                    <span>ไปต่อ</span>
+                    <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform duration-300"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <main id="page-catalog" class="hidden flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+        
+        <!-- Header & Category Filter Bar -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-gray-800 pb-6">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Products Showcase</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">รายการสินค้า Samsung Galaxy</h2>
+                <p class="text-gray-400 text-sm mt-1">จัดเรียงตามลำดับราคาจำหน่ายจากน้อยไปมาก (3,499 - 67,900 บาท)</p>
+            </div>
+
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap gap-2">
+                <button onclick="filterCategory('all')" class="cat-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-blue-600 text-white shadow-lg shadow-blue-600/30" data-cat="all">
+                    ทั้งหมด (10)
+                </button>
+                <button onclick="filterCategory('A')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white" data-cat="A">
+                    Galaxy A Series
+                </button>
+                <button onclick="filterCategory('S')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white" data-cat="S">
+                    Galaxy S Series
+                </button>
+                <button onclick="filterCategory('Z')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white" data-cat="Z">
+                    Galaxy Z Fold/Flip
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Grid Container -->
+        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <!-- Dynamic Product Cards injected by JavaScript -->
+        </div>
+
+    </main>
+
+    <div id="buy-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card max-w-md w-full rounded-2xl p-6 sm:p-8 space-y-6 border border-blue-500/30 relative text-center shadow-2xl">
+            <button onclick="closeBuyModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl p-1 transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="w-16 h-16 bg-blue-600/20 text-blue-400 rounded-2xl flex items-center justify-center mx-auto text-2xl border border-blue-500/40">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold text-white" id="modal-phone-title">ยืนยันคำสั่งซื้อ</h3>
+            <p class="text-sm text-gray-300 font-medium" id="modal-phone-price"></p>
+            
+            <div class="bg-gray-900/90 p-4 rounded-xl text-xs text-left text-gray-300 space-y-2 border border-gray-800">
+                <p class="text-blue-400 font-bold"><i class="fa-solid fa-circle-info mr-1"></i> สิทธิพิเศษสำหรับนิสิต & วัยทำงาน:</p>
+                <ul class="list-disc list-inside space-y-1 text-gray-400">
+                    <li>รับส่วนลดนักศึกษา/บุคลากรเพิ่ม 10%</li>
+                    <li>ผ่อนชำระ 0% นานสูงสุด 10 เดือน</li>
+                    <li>ฟรีประกันภัย Samsung Care+ นาน 1 ปี</li>
+                </ul>
+            </div>
+
+            <!-- Disclaimer inside modal -->
+            <p class="text-xs text-red-400 font-bold border-t border-gray-800/80 pt-3">
+                *ระบบสั่งซื้อจำลองจัดทำขึ้นเพื่อกิจกรรมการศึกษา BUS101 เท่านั้น
+            </p>
+
+            <div class="flex gap-3">
+                <button onclick="closeBuyModal()" class="flex-1 py-3 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 font-semibold text-sm transition-all">
+                    ยกเลิก
+                </button>
+                <button onclick="confirmOrder()" class="flex-1 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/40 active:scale-95">
+                    ยืนยันการสั่งซื้อ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-emerald-600 text-white px-6 py-4 rounded-2xl shadow-2xl z-50 hidden flex items-center space-x-3 border border-emerald-400/30">
+        <i class="fa-solid fa-circle-check text-2xl"></i>
+        <span id="toast-msg" class="text-sm font-semibold">ทำรายการสำเร็จ!</span>
+    </div>
+
+    <footer class="border-t border-gray-800/80 bg-gray-950/80 py-8 text-xs text-gray-400 space-y-2 mt-12">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-2">
+                <span class="font-black text-white tracking-widest font-inter">SAMSUNG</span>
+                <span>| Student & Professional Interactive Showcase</span>
+            </div>
+            <p class="text-red-400 font-bold text-center sm:text-right">
+                รายวิชา BUS101 Principles of Marketing - มหาวิทยาลัย (เพื่อการเรียนการสอนเท่านั้น)
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // High Quality Public Product Image Resources (with SVG Vector Renderer Fallback)
+        const products = [
+            {
+                id: "a07",
+                name: "Samsung Galaxy A07",
+                category: "A",
+                targetGroup: "นิสิตปี 1 / สายประหยัด",
+                price: 3499,
+                priceDisplay: "3,499 บาท",
+                image: "https://images.samsung.com/is/image/samsung/p6pim/th/sm-a055fzkgthl/gallery/th-galaxy-a05-sm-a055-sm-a055fzkgthl-538826727?$650_519_PNG$",
+                specs: {
+                    screen: '6.7" HD+ PLS LCD 90Hz',
+                    chip: 'MediaTek Helio G85 (6nm)',
+                    ramRom: '4GB RAM / 64GB-128GB ROM',
+                    camera: 'กล้องหลัก 50MP + 2MP Depth',
+                    battery: '5,000 mAh (ชาร์จไว 25W)'
+                },
+                article: "สมาร์ทโฟนระดับเริ่มต้นที่ให้ความคุ้มค่าเกินราคา ตอบโจทย์วัยเรียนสำหรับใช้งานโซเชียล เข้าเรียนออนไลน์ หรือดูซีรีส์ด้วยหน้าจอใหญ่ 6.7 นิ้ว แบตเตอรี่อึดอยู่นานตลอดวัน ไม่ต้องพกพาวเวอร์แบงก์"
+            },
+            {
+                id: "a06",
+                name: "Samsung Galaxy A06 5G",
+                category: "A",
+                targetGroup: "นักศึกษา / ผู้เริ่มทำงาน",
+                price: 3899,
+                priceDisplay: "3,899 บาท",
+                image: "https://images.samsung.com/is/image/samsung/p6pim/th/sm-a057fzkdthl/gallery/th-galaxy-a05s-sm-a057-sm-a057fzkdthl-538827018?$650_519_PNG$",
+                specs: {
+                    screen: '6.7" HD+ LCD 90Hz',
+                    chip: 'MediaTek Dimensity 6300 5G',
+                    ramRom: '4GB-6GB RAM / 128GB ROM',
+                    camera: 'กล้องหลัก 50MP คมชัดสูง',
+                    battery: '5,000 mAh (ชาร์จไว 25W)'
+                },
+                article: "ขยับความเร็วขึ้นมาอีกระดับด้วยสัญญาณ 5G ในราคาสบายกระเป๋า ปลอดภัยด้วยฟีเจอร์ Auto Blocker ป้องกันมิจฉาชีพ กล้อง 50MP ถ่ายรูปส่งงานหรือทำคอนเทนต์ลง Reels ได้อย่างสบายใจ"
+            },
+            {
+                id: "a17",
+                name: "Samsung Galaxy A17 5G",
+                category: "A",
+                targetGroup: "นักศึกษา / คนทำงานยุคใหม่",
+                price: 6990,
+                priceDisplay: "6,990 บาท",
+                image: "https://images.samsung.com/is/image/samsung/p6pim/th/sm-a156elbdthl/gallery/th-galaxy-a15-5g-sm-a156-sm-a156elbdthl-539268759?$650_519_PNG$",
+                specs: {
+                    screen: '6.6" FHD+ Super AMOLED 120Hz',
+                    chip: 'Exynos 1330 5G Octa-Core',
+                    ramRom: '8GB RAM / 128GB-256GB ROM',
+                    camera: 'กล้องหลัก 50MP (OIS) + Ultra-wide',
+                    battery: '5,000 mAh'
+                },
+                article: "รุ่นมหาชนคนงบน้อยที่อยากได้จอสวยสเปคแรง หน้าจอ Super AMOLED 120Hz ลื่นไหลสบายตา เหมาะสำหรับสายเกมมิ่งระดับกลางและสายแต่งภาพด้วย RAM ที่เยอะถึง 8GB"
+            },
+            {
+                id: "a35",
+                name: "Samsung Galaxy A35 5G",
+                category: "A",
+                targetGroup: "คนทำงาน / วัยรุ่นสายคอนเทนต์",
+                price: 11999,
+                priceDisplay: "11,999 บาท",
+                image: "https://images.samsung.com/is/image/samsung/p6pim/th/sm-a356elbgthl/gallery/th-galaxy-a35-5g-sm-a356-sm-a356elbgthl-540136934?$650_519_PNG$",
+                specs: {
+                    screen: '6.6" FHD+ Super AMOLED 120Hz',
+                    chip: 'Exynos 1380 Octa-Core',
+                    ramRom: '8GB RAM / 128GB ROM',
+                    camera: '50MP (OIS) + 8MP Ultra-wide + 5MP',
+                    battery: '5,000 mAh (IP67 กันน้ำกันฝุ่น)'
+                },
+                article: "ยกระดับความพรีเมียมด้วยฝาหลังกระจก Corning Gorilla Glass Victus+ พร้อมระบบกันสั่น OIS ถ่ายวิดีโอไม่สั่นไหว ตัวเครื่องกันน้ำ IP67 ลุยได้ทุกสถานการณ์โดยไม่ต้องกังวล"
+            },
+            {
+                id: "a55",
+                name: "Samsung Galaxy A55 5G",
+                category: "A",
+                targetGroup: "คนทำงาน First Jobber / ครีเอเตอร์",
+                price: 14990,
+                priceDisplay: "14,990 บาท",
+                image: "https://images.samsung.com/is/image/samsung/p6pim/th/sm-a556elbdthl/gallery/th-galaxy-a55-5g-sm-a556-sm-a556elbdthl-540137256?$650_519_PNG$",
+                specs: {
+                    screen: '6.6" FHD+ Super AMOLED HDR10+',
+                    chip: 'Exynos 1480 (GPU AMD Xclipse)',
+                    ramRom: '8GB-12GB RAM / 128GB-256GB',
+                    camera: '50MP Nightography + 32MP Front',
+                    battery: '5,000 mAh (กรอบโลหะสุดหรู)'
+                },
+                article: "ตัวท็อปของ A Series กับขอบตัวเครื่องแบบโลหะสุดพรีเมียม ถ่ายภาพกลางคืน (Nightography) ได้คมชัดด้วย AI มีความปลอดภัยระดับองค์กร Samsung Knox เหมาะสำหรับวัยทำงานยุคใหม่"
+            },
+            {
+                id: "s25fe",
+                name: "Samsung Galaxy S25 FE",
+                category: "S",
+                targetGroup: "นิสิตป.โท / คนทำงานสาย Tech",
+                price: 22900,
+                priceDisplay: "22,900 บาท",
+                image: "https://images.samsung.com/is/image/samsung/p6pim/th/sm-s711blggthl/gallery/th-galaxy-s23-fe-s711-sm-s711blggthl-538562143?$650_519_PNG$",
+                specs: {
+                    screen: '6.4" Dynamic AMOLED 2X 120Hz',
+                    chip: 'Exynos 2400e Flagship Chip',
+                    ramRom: '8GB RAM / 128GB-256GB ROM',
+                    camera: '50MP + 12MP Ultra-wide + 8MP Tele 3X',
+                    battery: '4,700 mAh + Wireless Charge'
+                },
+                article: "Fan Edition สเปคเรือธงในราคาเข้าถึงง่าย สัมผัสประสบการณ์ Galaxy AI แบบจัดเต็ม ช่วยสรุปชีทเรียน ถอดความเสียง แปลภาษาเรียลไทม์ และแต่งรูปได้เหมือนมืออาชีพ"
+            },
+            {
+                id: "s26",
+                name: "Samsung Galaxy S26",
+                category: "S",
+                targetGroup: "วัยทำงาน / สายพกพาสะดวก",
+                price: 33900,
+                priceDisplay: "33,900 บาท",
+                image: "https://images.samsung.com/is/image/samsung/p6pim/th/2401/gallery/th-galaxy-s24-sm-s921-sm-s921bzyqthl-539572450?$650_519_PNG$",
+                specs: {
+                    screen: '6.3" Dynamic LTPO AMOLED 2X 3000nits',
+                    chip: 'Exynos 2600 / Snapdragon 8 Elite',
+                    ramRom: '12GB RAM / 256GB-512GB ROM',
+                    camera: '50MP Main + 10MP Tele 3X + 12MP UW',
+                    battery: '4,000 mAh (ชาร์จไร้สาย Fast Wireless)'
+                },
+                article: "เรือธงขนาดกะทัดรัด ตัวเครื่องบางเบาพกพาสะดวก หน้าจอจอสว่างสู้แสงแดดได้สบาย พร้อมการประมวลผล AI แบบ On-Device รวดเร็ว ปลอดภัย เหมาะสำหรับการคุยงานและพกติดตัวทั้งวัน"
+            },
+            {
+                id: "flip6",
+                name: "Samsung Galaxy Z Flip6",
+                category: "Z",
+                targetGroup: "สายแฟชั่น / ครีเอเตอร์ / วัยทำงาน",
+                price: 42900,
+                priceDisplay: "42,900 บาท",
+                image: "https://images.samsung.com/is/image/samsung/p6pim/th/sm-f741blbathl/gallery/th-galaxy-z-flip6-f741-sm-f741blbathl-542526554?$650_519_PNG$",
+                specs: {
+                    screen: 'จอใน 6.7" Dynamic 2X / จอนอก 3.4" Super AMOLED',
+                    chip: 'Snapdragon 8 Gen 3 for Galaxy',
+                    ramRom: '12GB RAM / 256GB-512GB ROM',
+                    camera: '50MP Dual Camera + FlexCam Auto Zoom',
+                    battery: '4,000 mAh (พับได้สนิท)'
+                },
+                article: "นวัตกรรมจอพับทรงตลับแป้งสุดคูล ไม่ต้องพึ่งขาตั้งกล้องด้วย FlexCam ถ่าย vlogger หรือเซลฟี่มุมมองใหม่ๆ ได้สะดวก หน้าจอนอก FlexWindow ตกแต่งวิดเจ็ตได้ตามไลฟ์สไตล์ผู้ใช้"
+            },
+            {
+                id: "s26ultra",
+                name: "Samsung Galaxy S26 Ultra",
+                category: "S",
+                targetGroup: "ผู้บริหาร / สายถ่ายภาพโปร / วัยทำงานระดับสูง",
+                price: 46900,
+                priceDisplay: "46,900 บาท",
+                image: "https://images.samsung.com/is/image/samsung/p6pim/th/2401/gallery/th-galaxy-s24-s928-sm-s928bztqthl-539573347?$650_519_PNG$",
+                specs: {
+                    screen: '6.9" Dynamic AMOLED 2X + Privacy Display',
+                    chip: 'Snapdragon 8 Elite Gen 5',
+                    ramRom: '12GB-16GB RAM / 256GB-1TB ROM',
+                    camera: '200MP Ultra-Clarity + Space Zoom 100X',
+                    battery: '5,000 mAh + S-Pen ในตัว'
+                },
+                article: "ที่สุดแห่งความทรงพลังสำหรับสายโปร ปากกา S-Pen ในตัวสำหรับจดโน้ต ประชุมงาน หรือวาดภาพ หน้าจอใหม่กันคนมองด้านข้าง Privacy Display และกล้อง 200MP ถ่ายภาพสวยสมบูรณ์แบบทุกสภาพแสง"
+            },
+            {
+                id: "fold8",
+                name: "Samsung Galaxy Z Fold8",
+                category: "Z",
+                targetGroup: "นักธุรกิจ / CEO / ผู้ที่ชอบ Multi-tasking",
+                price: 67900,
+                priceDisplay: "67,900 บาท",
+                image: "https://images.samsung.com/is/image/samsung/p6pim/th/sm-f956bzakthl/gallery/th-galaxy-z-fold6-f956-sm-f956bzakthl-542526978?$650_519_PNG$",
+                specs: {
+                    screen: 'กางออก 7.6" AMOLED 2X / จอนอก 6.3"',
+                    chip: 'Snapdragon 8 Elite Flagship',
+                    ramRom: '12GB-16GB RAM / 256GB-1TB ROM',
+                    camera: '50MP Triple Camera + Under Display Cam',
+                    battery: '4,400 mAh (น้ำหนักเบาและบางลง)'
+                },
+                article: "ขีดสุดแห่งสมาร์ทโฟนพรีเมียม กางออกมาเป็นแท็บเล็ตขนาดจิ๋ว เปิดใช้งาน 3 แอปพลิเคชันพร้อมกันอย่างลื่นไหล ตอบโจทย์การทำงานอ่านไฟล์เสนองาน ดูหุ้น หรือตัดต่อวิดีโออย่างเป็นมืออาชีพ"
+            }
+        ];
+
+        // Vector Render Generator to guarantee visual output even if external images are blocked or offline
+        function generateSVGDevice(item) {
+            let svgContent = '';
+            if (item.category === 'Z' && item.id.includes('flip')) {
+                // Flip phone SVG
+                svgContent = `
+                <svg viewBox="0 0 200 240" class="w-full h-full max-h-48 drop-shadow-2xl mx-auto">
+                    <!-- Top Screen/Cover Screen -->
+                    <rect x="50" y="20" width="100" height="90" rx="14" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+                    <rect x="58" y="28" width="84" height="45" rx="8" fill="#090d16" stroke="#1d4ed8" stroke-width="1"/>
+                    <text x="100" y="55" fill="#60a5fa" font-size="10" text-anchor="middle" font-family="sans-serif">FlexWindow</text>
+                    <circle cx="70" cy="85" r="7" fill="#0f172a" stroke="#60a5fa" stroke-width="1.5"/>
+                    <circle cx="90" cy="85" r="7" fill="#0f172a" stroke="#60a5fa" stroke-width="1.5"/>
+                    <!-- Hinge -->
+                    <rect x="48" y="112" width="104" height="8" rx="4" fill="#3b82f6"/>
+                    <!-- Bottom Fold Body -->
+                    <rect x="50" y="122" width="100" height="90" rx="14" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+                    <text x="100" y="170" fill="#94a3b8" font-size="9" text-anchor="middle" font-weight="bold">GALAXY Z FLIP</text>
+                </svg>`;
+            } else if (item.category === 'Z' && item.id.includes('fold')) {
+                // Fold phone SVG
+                svgContent = `
+                <svg viewBox="0 0 220 240" class="w-full h-full max-h-48 drop-shadow-2xl mx-auto">
+                    <!-- Left Wing -->
+                    <rect x="20" y="20" width="85" height="190" rx="10" fill="#0f172a" stroke="#3b82f6" stroke-width="2"/>
+                    <!-- Right Wing -->
+                    <rect x="110" y="20" width="85" height="190" rx="10" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+                    <!-- Screen Inner Glow -->
+                    <rect x="26" y="26" width="163" height="178" rx="6" fill="#020617" opacity="0.9"/>
+                    <!-- Center Hinge Line -->
+                    <line x1="107" y1="20" x2="107" y2="210" stroke="#60a5fa" stroke-width="3" opacity="0.8"/>
+                    <!-- UI Grid Simulation -->
+                    <rect x="35" y="40" width="60" height="70" rx="6" fill="#1e3a8a" opacity="0.6"/>
+                    <rect x="120" y="40" width="60" height="140" rx="6" fill="#1e293b" stroke="#3b82f6" stroke-width="1"/>
+                    <text x="107" y="200" fill="#38bdf8" font-size="8" text-anchor="middle">ULTRA DUAL SCREEN</text>
+                </svg>`;
+            } else if (item.id.includes('ultra')) {
+                // Ultra Series with S-Pen SVG
+                svgContent = `
+                <svg viewBox="0 0 200 240" class="w-full h-full max-h-48 drop-shadow-2xl mx-auto">
+                    <!-- Outer Body Square Edges -->
+                    <rect x="45" y="15" width="110" height="210" rx="6" fill="#0f172a" stroke="#60a5fa" stroke-width="2.5"/>
+                    <rect x="50" y="20" width="100" height="200" rx="3" fill="#020617"/>
+                    <!-- Quad Camera Island Rings -->
+                    <circle cx="68" cy="42" r="10" fill="#1e293b" stroke="#60a5fa" stroke-width="2"/>
+                    <circle cx="68" cy="70" r="10" fill="#1e293b" stroke="#60a5fa" stroke-width="2"/>
+                    <circle cx="68" cy="98" r="10" fill="#1e293b" stroke="#60a5fa" stroke-width="2"/>
+                    <circle cx="92" cy="56" r="7" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+                    <!-- S-Pen -->
+                    <rect x="162" y="50" width="6" height="150" rx="3" fill="#3b82f6"/>
+                    <text x="100" y="160" fill="#60a5fa" font-size="10" font-weight="bold" text-anchor="middle">S-PEN ULTRA</text>
+                </svg>`;
+            } else {
+                // Standard Galaxy Bar Phone (A & S Series) SVG
+                svgContent = `
+                <svg viewBox="0 0 200 240" class="w-full h-full max-h-48 drop-shadow-2xl mx-auto">
+                    <rect x="50" y="15" width="100" height="210" rx="18" fill="#0f172a" stroke="#3b82f6" stroke-width="2"/>
+                    <rect x="54" y="20" width="92" height="200" rx="14" fill="#020617"/>
+                    <!-- Punch hole camera -->
+                    <circle cx="100" cy="30" r="3.5" fill="#38bdf8"/>
+                    <!-- Triple Camera Floating Rings -->
+                    <circle cx="70" cy="50" r="8" fill="#1e293b" stroke="#60a5fa" stroke-width="1.5"/>
+                    <circle cx="70" cy="72" r="8" fill="#1e293b" stroke="#60a5fa" stroke-width="1.5"/>
+                    <circle cx="70" cy="94" r="8" fill="#1e293b" stroke="#60a5fa" stroke-width="1.5"/>
+                    <!-- Screen Graphic Glow -->
+                    <circle cx="100" cy="150" r="30" fill="#3b82f6" opacity="0.15"/>
+                    <text x="100" y="180" fill="#60a5fa" font-size="9" text-anchor="middle" font-weight="bold">${item.name.toUpperCase()}</text>
+                </svg>`;
+            }
+            return svgContent;
+        }
+
+        let activeSelectedPhone = null;
+
+        function navigateTo(pageId) {
+            const pageHome = document.getElementById('page-home');
+            const pageCatalog = document.getElementById('page-catalog');
+            const navHome = document.getElementById('nav-home');
+            const navCatalog = document.getElementById('nav-catalog');
+
+            if (pageId === 'home') {
+                pageHome.classList.remove('hidden');
+                pageCatalog.classList.add('hidden');
+                
+                navHome.className = "text-sm px-4 py-2 rounded-xl font-medium transition-all duration-200 text-blue-400 bg-blue-950/60 border border-blue-800/50";
+                navCatalog.className = "text-sm px-4 py-2 rounded-xl font-medium text-gray-400 hover:text-white hover:bg-gray-800/80 transition-all duration-200";
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            } else {
+                pageHome.classList.add('hidden');
+                pageCatalog.classList.remove('hidden');
+
+                navCatalog.className = "text-sm px-4 py-2 rounded-xl font-medium transition-all duration-200 text-blue-400 bg-blue-950/60 border border-blue-800/50";
+                navHome.className = "text-sm px-4 py-2 rounded-xl font-medium text-gray-400 hover:text-white hover:bg-gray-800/80 transition-all duration-200";
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            }
+        }
+
+        function renderProducts(items) {
+            const container = document.getElementById('product-grid');
+            container.innerHTML = '';
+
+            items.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = "glass-card rounded-2xl overflow-hidden border border-gray-800 hover:border-blue-500/50 transition-all duration-300 flex flex-col justify-between group transform hover:-translate-y-1.5 glow-effect";
+
+                const fallbackSvg = generateSVGDevice(item);
+
+                card.innerHTML = `
+                    <div>
+                        <!-- Product Image & Badge Header -->
+                        <div class="relative bg-gradient-to-b from-gray-900/90 to-gray-950/60 p-6 flex items-center justify-center min-h-[260px] overflow-hidden border-b border-gray-800/80">
+                            <!-- Index Badge -->
+                            <span class="absolute top-3 left-3 bg-blue-950/90 text-blue-400 border border-blue-800/60 text-xs px-2.5 py-1 rounded-lg font-mono font-bold shadow-md z-10">
+                                อันดับ #${index + 1}
+                            </span>
+                            
+                            <!-- Target Group Tag -->
+                            <span class="absolute top-3 right-3 bg-gray-800/90 text-gray-200 text-xs px-3 py-1 rounded-full font-medium border border-gray-700 shadow-md z-10 flex items-center gap-1.5">
+                                <i class="fa-solid fa-user-graduate text-blue-400"></i> ${item.targetGroup}
+                            </span>
+
+                            <!-- Main Phone Image with Fallback vector generator -->
+                            <div class="w-full h-52 flex items-center justify-center relative">
+                                <img src="${item.image}" 
+                                     alt="${item.name}" 
+                                     loading="lazy"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" 
+                                     class="max-h-52 object-contain group-hover:scale-110 transition-transform duration-500 drop-shadow-2xl z-0" />
+                                
+                                <div class="hidden w-full h-full" style="display:none;">
+                                    ${fallbackSvg}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Body Content -->
+                        <div class="p-6 space-y-4">
+                            <!-- Phone Title and Price -->
+                            <div class="flex justify-between items-start gap-2">
+                                <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">${item.name}</h3>
+                                <div class="text-right">
+                                    <span class="text-[10px] uppercase font-bold text-gray-400 block tracking-wider">ราคาเริ่มต้น</span>
+                                    <span class="text-lg font-black text-blue-400 font-inter tracking-tight">${item.priceDisplay}</span>
+                                </div>
+                            </div>
+
+                            <!-- Highlights Marketing Article Pitch -->
+                            <div class="bg-gray-900/60 p-3.5 rounded-xl border border-gray-800/80 space-y-1">
+                                <p class="text-xs text-blue-400 font-bold flex items-center">
+                                    <i class="fa-solid fa-award mr-1.5 text-blue-400"></i> จุดเด่นน่าซื้อสำหรับคุณ:
+                                </p>
+                                <p class="text-xs text-gray-300 leading-relaxed font-normal">
+                                    ${item.article}
+                                </p>
+                            </div>
+
+                            <!-- Hardware Specs Table -->
+                            <div class="space-y-2 text-xs text-gray-400 border-t border-gray-800/60 pt-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-400"><i class="fa-solid fa-mobile-screen mr-1.5 text-blue-500"></i> หน้าจอ:</span>
+                                    <span class="text-gray-200 font-medium">${item.specs.screen}</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-400"><i class="fa-solid fa-microchip mr-1.5 text-blue-500"></i> ชิปเซ็ต:</span>
+                                    <span class="text-gray-200 font-medium">${item.specs.chip}</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-400"><i class="fa-solid fa-memory mr-1.5 text-blue-500"></i> ความจุ:</span>
+                                    <span class="text-gray-200 font-medium">${item.specs.ramRom}</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-400"><i class="fa-solid fa-camera mr-1.5 text-blue-500"></i> กล้อง:</span>
+                                    <span class="text-gray-200 font-medium">${item.specs.camera}</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-400"><i class="fa-solid fa-battery-full mr-1.5 text-blue-500"></i> แบตเตอรี่:</span>
+                                    <span class="text-gray-200 font-medium">${item.specs.battery}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Buy Action Button -->
+                    <div class="px-6 pb-6 pt-1">
+                        <button onclick="openBuyModal('${item.id}')" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg shadow-blue-600/30 active:scale-95">
+                            <i class="fa-solid fa-cart-shopping text-sm"></i>
+                            <span>Buy Now</span>
+                        </button>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        function filterCategory(cat) {
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(btn => {
+                if (btn.dataset.cat === cat) {
+                    btn.className = "cat-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-blue-600 text-white shadow-lg shadow-blue-600/30";
+                } else {
+                    btn.className = "cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white";
+                }
+            });
+
+            if (cat === 'all') {
+                renderProducts(products);
+            } else {
+                const filtered = products.filter(p => p.category === cat);
+                renderProducts(filtered);
+            }
+        }
+
+        function openBuyModal(productId) {
+            activeSelectedPhone = products.find(p => p.id === productId);
+            if (!activeSelectedPhone) return;
+
+            document.getElementById('modal-phone-title').innerText = activeSelectedPhone.name;
+            document.getElementById('modal-phone-price').innerText = `ราคาจำหน่าย: ${activeSelectedPhone.priceDisplay}`;
+            document.getElementById('buy-modal').classList.remove('hidden');
+        }
+
+        function closeBuyModal() {
+            document.getElementById('buy-modal').classList.add('hidden');
+        }
+
+        function confirmOrder() {
+            closeBuyModal();
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-msg');
+            toastMsg.innerText = `จำลองสั่งซื้อ ${activeSelectedPhone.name} เรียบร้อยแล้ว!`;
+            
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3500);
+        }
+
+        window.onload = function() {
+            // Render sorted low-to-high products on startup
+            renderProducts(products);
+        };
+    </script>
+</body>
+</html>
